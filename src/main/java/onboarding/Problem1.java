@@ -3,7 +3,6 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -37,22 +36,24 @@ class Problem1 {
         int pobiNum = Math.max(biggerNumbers.get(0), biggerNumbers.get(1));
         int crongNum = Math.max(biggerNumbers.get(2), biggerNumbers.get(3));
 
-        // show the result
-        int answer;
-        if (pobiNum > crongNum) {
-            answer = 1;
-        } else if (pobiNum < crongNum) {
-            answer = 2;
-        } else if (pobiNum == crongNum) {
-            answer = 0;
-        } else {
-            answer = -1;
+
+        // process the result
+        int result = -1; // default result = error
+
+        if ((pobi.get(1) - pobi.get(0)) == 1 & (crong.get(1) - crong.get(0) == 1)) { // only when the pages are sequential
+            if (pobiNum > crongNum) {
+                result = 1;
+            } else if (pobiNum < crongNum) {
+                result = 2;
+            } else if (pobiNum == crongNum) {
+                result = 0;
+            }
         }
 
-        return answer;
+        return result;
     }
 
     public static void main(String[] args) {
-        System.out.println("answer: " + solution(Arrays.asList(97, 98), Arrays.asList(197, 198)));
+        System.out.println("result: " + solution(Arrays.asList(131, 132), Arrays.asList(211, 212)));
     }
 }
