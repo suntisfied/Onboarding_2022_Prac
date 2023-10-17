@@ -7,22 +7,6 @@ import java.util.Random;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
-
-    public static boolean isEven(int number) {
-        return number % 2 == 0;
-    }
-
-    public static void main(String[] args) {
-//        List<Integer> pobi = Arrays.asList(97, 98);
-//        List<Integer> crong = Arrays.asList(197, 198);
-
-        // initial input values
-        List<Integer> pobi = Arrays.asList(97, 98);
-        List<Integer> crong = Arrays.asList(297, 298);
-
         List<List> members = Arrays.asList(pobi, crong); // create list, number of participant of the game
         List<Integer> biggerNumbers = new ArrayList<>(); // create list, bigger numbers between sum and multiply
 
@@ -54,14 +38,21 @@ class Problem1 {
         int crongNum = Math.max(biggerNumbers.get(2), biggerNumbers.get(3));
 
         // show the result
+        int answer;
         if (pobiNum > crongNum) {
-            System.out.println(1);
+            answer = 1;
         } else if (pobiNum < crongNum) {
-            System.out.println(2);
+            answer = 2;
         } else if (pobiNum == crongNum) {
-            System.out.println(0);
+            answer = 0;
         } else {
-            System.out.println(-1);
+            answer = -1;
         }
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("answer: " + solution(Arrays.asList(97, 98), Arrays.asList(197, 198)));
     }
 }
